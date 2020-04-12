@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1b8eb3c7-350c-41a5-9b67-7185e418f1cb" name="Default Changelist" comment="" />
+    <list default="true" id="1b8eb3c7-350c-41a5-9b67-7185e418f1cb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Models/Aceites.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Models/Agua.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Models/Carnes.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Models/Cereal.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Models/Frutas.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Models/Huevos.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Models/Ingredientes.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Models/Leche.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Models/Recipe.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Models/Verduras.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Ingredientes.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/RecipeMaker.kt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,7 +24,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Kotlin File" />
         <option value="Kotlin Class" />
+        <option value="Kotlin Interface" />
       </list>
     </option>
   </component>
@@ -25,17 +41,18 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunManager">
-    <configuration name="IngredientesKt" type="JetRunConfigurationType" factoryName="Kotlin" temporary="true" nameIsGenerated="true">
+    <configuration name="RecipeMakerKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
       <module name="RecipeMaker" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" value="IngredientesKt" />
+      <option name="MAIN_CLASS_NAME" value="RecipeMakerKt" />
       <option name="WORKING_DIRECTORY" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -43,7 +60,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Kotlin.IngredientesKt" />
+        <item itemvalue="Kotlin.RecipeMakerKt" />
       </list>
     </recent_temporary>
   </component>
@@ -61,22 +78,30 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1237" height="163" key="GridCell.Tab.0.bottom" timestamp="1586489552070">
+    <state x="432" y="57" key="#com.intellij.ide.util.MemberChooser" timestamp="1586710926270">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1586489552070" />
-    <state width="1237" height="163" key="GridCell.Tab.0.center" timestamp="1586489552070">
+    <state x="432" y="57" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1586710926270" />
+    <state x="371" y="88" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1586710960804">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1586489552070" />
-    <state width="1237" height="163" key="GridCell.Tab.0.left" timestamp="1586489552070">
+    <state x="371" y="88" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1586710960804" />
+    <state width="1237" height="163" key="GridCell.Tab.0.bottom" timestamp="1586714625263">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1586489552070" />
-    <state width="1237" height="163" key="GridCell.Tab.0.right" timestamp="1586489552070">
+    <state width="1237" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1586714625263" />
+    <state width="1237" height="163" key="GridCell.Tab.0.center" timestamp="1586714625263">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1586489552070" />
+    <state width="1237" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1586714625263" />
+    <state width="1237" height="163" key="GridCell.Tab.0.left" timestamp="1586714625259">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1586714625259" />
+    <state width="1237" height="163" key="GridCell.Tab.0.right" timestamp="1586714625263">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1586714625263" />
     <state x="297" y="151" key="run.anything.popup" timestamp="1586409468323">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
