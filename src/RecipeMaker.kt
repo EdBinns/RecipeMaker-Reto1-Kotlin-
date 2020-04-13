@@ -44,16 +44,29 @@ fun viewRecipe() {
         Ver mis recetas
         
     """.trimIndent()
-    val showRecipe= {
+    val showRecipe = {
         println(paragraphViewReciper)
-        for ((index, recipe) in listRecipes.withIndex()) { println("Esta viendo la receta  ${index + 1}  ${recipe.nombreReceta}")}}
+        for ((index, recipe) in listRecipes.withIndex()) {
+            println("Esta viendo la receta  ${index + 1}  ${recipe.nombreReceta}")
+        }
+    }
     showRecipe()
+    println("Ingrese el numero de la receta que desea ver los ingredientes: ")
+    val numberSelected = readLine()
+    if (numberSelected != null) {
+        val recipeSelected = listRecipes[numberSelected.toInt() - 1]
+        println("La receta esta compuesta por los siguientes ingredientes")
+        for ((index,ingredient) in recipeSelected.Ingredientes.withIndex())
+            println("${index + 1}. ${ingredient.nombre} y  en una cantidad de ${ingredient.cantidad}")
+    }
+
+
 }
 fun makeRecipe() {
     val list: MutableList<Ingredientes> = ArrayList()
 
     println("Ingrese el nombre de la receta")
-    val nameRecipe: String? = readLine()
+    val nameRecipe: String? = readLine()gi
     var flag: Boolean = true
     while (flag) {
         val namesingredients = """
@@ -73,19 +86,21 @@ fun makeRecipe() {
         val nameIngredient: String? = readLine()
         when(nameIngredient?.toInt()){
             1->{
+                val listWater: MutableList<Agua> = ArrayList()
+                listWater.add( Agua("Agua de manantial", 0,true))
+                listWater.add( Agua("Agua de grifo", 0,false))
                 var agua :Agua? = null
-                val  parrafo = """
-                    Ingrese el tipo de agua que desea:
-                        1.Agua de manantial
-                        2.Agua del grifo
-                """.trimIndent()
-                println(parrafo)
+                println("Ingrese el tipo de agua que desea:")
+                for((index,water) in listWater.withIndex())
+                    println("${index + 1}. ${water.nombre} ")
                 val typeSelected = readLine()
                 println("Ingrese la cantidad que desea agregar: ")
                 val cant : Int?= readLine()?.toInt()
                 when(typeSelected?.capitalize()){
-                    "1"-> agua = cant?.let { Agua(nameIngredient, it,true) }!!
-                    "2"-> agua = cant?.let { Agua(nameIngredient, it,false) }!!
+                    "1"->{ if(cant != null) listWater[0].cantidad = cant
+                          agua = listWater[0]}
+                    "2"-> { if(cant != null) listWater[1].cantidad = cant
+                        agua = listWater[1]}
                     else -> {println("No se ha logrado ingresar ese ingrediente, por favor vuelva a intentarlo")
                              makeRecipe()}
                 }
@@ -94,115 +109,136 @@ fun makeRecipe() {
                 }
             }
             2->{
+                val listMilk: MutableList<Leche> = ArrayList()
+                listMilk.add(Leche("Leche de vaca", 0, "Vaca") )
+                listMilk.add(Leche("Leche de cabra", 0, "Cabra") )
+                listMilk.add(Leche("Leche de oveja", 0, "Oveja") )
+                listMilk.add(Leche("Leche de Camello", 0, "Camello") )
                 var leche : Leche? = null
-                val  parrafo = """
-                    Ingrese el tipo de leche que desea:
-                       1.Leche de vaca
-                       2.Leche de cabra
-                       3.Leche de oveja
-                       4.Leche de camello
-                """.trimIndent()
-                println(parrafo)
+                println("Ingrese el tipo de leche que desea:")
+                for((index,milk) in listMilk.withIndex())
+                    println("${index + 1}. ${milk.nombre} ")
                 val typeSelected = readLine()
                 println("Ingrese la cantidad que desea agregar: ")
                 val cant : Int?= readLine()?.toInt()
                 when(typeSelected){
-                    "1"-> leche = cant?.let { Leche(nameIngredient, it, "Vaca") }
-                    "2"-> leche = cant?.let { Leche(nameIngredient, it, "Cabra") }
-                    "3"-> leche = cant?.let { Leche(nameIngredient, it, "Oveja") }
-                    "4"-> leche = cant?.let { Leche(nameIngredient, it, "Camello") }
+                    "1"-> { if(cant != null) listMilk[0].cantidad = cant
+                        leche = listMilk[0]}
+                    "2"->{ if(cant != null) listMilk[1].cantidad = cant
+                        leche = listMilk[1]}
+                    "3"-> { if(cant != null) listMilk[2].cantidad = cant
+                        leche = listMilk[2]}
+                    "4"-> { if(cant != null) listMilk[3].cantidad = cant
+                        leche = listMilk[3]}
                     else -> {println("No se ha logrado ingresar ese ingrediente, por favor vuelva a intentarlo")
                         makeRecipe()}
                 }
                 if(leche != null)
                     list.add(leche)
             }
-            3->{  var carne : Carnes? = null
-                val  parrafo = """
-                    Ingrese el tipo de carne que desea:
-                       1.Res
-                       2.Cerdo
-                       3.Pollo
-                       4.Pescado
-                       """.trimIndent()
-                println(parrafo)
+            3->{ val listCarnes: MutableList<Carnes> = ArrayList()
+                listCarnes.add(Carnes("Carne de res", 0, "Res"))
+                listCarnes.add(Carnes("Carne de cerdo", 0, "Cerdo"))
+                listCarnes.add(Carnes("Pollo", 0, "Pollos"))
+                listCarnes.add(Carnes("Pescados", 0, "Peces"))
+                var carne : Carnes? = null
+                println("Ingrese el tipo de carne que desea:")
+                for((index,value) in listCarnes.withIndex())
+                    println("${index + 1}. ${value.nombre} ")
                 val typeSelected = readLine()
                 println("Ingrese la cantidad que desea agregar: ")
                 val cant : Int?= readLine()?.toInt()
                 when(typeSelected){
-                    "1"-> carne = cant?.let { Carnes(nameIngredient, it, "Res") }
-                    "2"-> carne = cant?.let { Carnes(nameIngredient, it, "Cerdo") }
-                    "3"-> carne = cant?.let { Carnes(nameIngredient, it, "Pollo") }
-                    "4"-> carne = cant?.let { Carnes(nameIngredient, it, "Pescado") }
+                    "1"->  { if(cant != null) listCarnes[0].cantidad = cant
+                        carne = listCarnes[0]}
+                    "2"->  { if(cant != null) listCarnes[1].cantidad = cant
+                        carne = listCarnes[1]}
+                    "3"->  { if(cant != null) listCarnes[2].cantidad = cant
+                        carne = listCarnes[2]}
+                    "4"->  { if(cant != null) listCarnes[2].cantidad = cant
+                        carne = listCarnes[2]}
                     else -> {println("No se ha logrado ingresar ese ingrediente, por favor vuelva a intentarlo")
                         makeRecipe()}
                 }
                 if(carne != null)
                     list.add(carne)}
-            4->{  var verdura : Verduras? = null
-                val  parrafo = """
-                    Ingrese la verdura  que desea:
-                       1.Lechuga
-                       2.Tomate
-                       3.Zanahoria
-                       4.Brocoli
-                       5.Apio
-                """.trimIndent()
-                println(parrafo)
+            4->{ val listVegetables: MutableList<Verduras> = ArrayList()
+                listVegetables.add(Verduras("Lechuga", 0, "Verde"))
+                listVegetables.add(Verduras("Tomate", 0, "Rojo"))
+                listVegetables.add(Verduras("Zanahoria", 0, "Anaranjado"))
+                listVegetables.add(Verduras("Brocoli", 0, "Verde"))
+                listVegetables.add(Verduras("Apio", 0, "Verde"))
+                var verdura : Verduras? = null
+                println("Ingrese la verdura  que desea:")
+                for((index,value) in listVegetables.withIndex())
+                    println("${index + 1}. ${value.nombre} ")
                 val typeSelected = readLine()
                 println("Ingrese la cantidad que desea agregar: ")
                 val cant : Int?= readLine()?.toInt()
                 when(typeSelected){
-                    "1"-> verdura = cant?.let { Verduras("Lechuga", it, "Verde") }
-                    "2"-> verdura = cant?.let { Verduras("Tomate", it, "Rojo") }
-                    "3"-> verdura = cant?.let { Verduras("Zanahoria", it, "Anaranjado") }
-                    "4"-> verdura = cant?.let { Verduras("Brocoli", it, "Verde") }
-                    "5"-> verdura = cant?.let { Verduras("Apio", it, "Verde") }
+                    "1"->  { if(cant != null) listVegetables[0].cantidad = cant
+                        verdura = listVegetables[0]}
+                    "2"->  { if(cant != null) listVegetables[1].cantidad = cant
+                        verdura = listVegetables[1]}
+                    "3"->{ if(cant != null) listVegetables[2].cantidad = cant
+                        verdura = listVegetables[2]}
+                    "4"->  { if(cant != null) listVegetables[3].cantidad = cant
+                        verdura = listVegetables[3]}
+                    "5"-> { if(cant != null) listVegetables[4].cantidad = cant
+                        verdura = listVegetables[4]}
                     else -> {println("No se ha logrado ingresar ese ingrediente, por favor vuelva a intentarlo")
                         makeRecipe()}
                 }
                 if(verdura != null)
                     list.add(verdura)}
-            5->{  var fruta : Frutas? = null
-                val  parrafo = """
-                    Ingrese la fruta  que desea:
-                       1.Manzana
-                       2.Limon
-                       3.Naranja
-                       4.Banano
-                       5.Mango
-                """.trimIndent()
-                println(parrafo)
+            5->{  val listFruits: MutableList<Frutas> = ArrayList()
+                listFruits.add(Frutas("Manzana", 0, true))
+                listFruits.add(Frutas("Limon", 0, false))
+                listFruits.add(Frutas("Naranja", 0, false))
+                listFruits.add(Frutas("Banano", 0, true) )
+                listFruits.add(Frutas("Mango", 0, true) )
+
+                var fruta : Frutas? = null
+                println("Ingrese la fruta  que desea:")
+                for((index,value) in listFruits.withIndex())
+                    println("${index + 1}. ${value.nombre} ")
                 val typeSelected = readLine()
                 println("Ingrese la cantidad que desea agregar: ")
                 val cant : Int?= readLine()?.toInt()
                 when(typeSelected){
-                    "1"-> fruta = cant?.let { Frutas("Manzana", it, true
-                    ) }
-                    "2"-> fruta = cant?.let { Frutas("Limon", it, false) }
-                    "3"-> fruta = cant?.let { Frutas("Naranja", it, false) }
-                    "4"-> fruta = cant?.let { Frutas("Banano", it, true) }
-                    "5"-> fruta = cant?.let { Frutas("Mango", it, false) }
+                    "1"-> { if(cant != null) listFruits[0].cantidad = cant
+                        fruta = listFruits[0] }
+                    "2"->  { if(cant != null) listFruits[1].cantidad = cant
+                        fruta = listFruits[1] }
+                    "3"->  { if(cant != null) listFruits[2].cantidad = cant
+                        fruta = listFruits[2] }
+                    "4"-> { if(cant != null) listFruits[3].cantidad = cant
+                        fruta = listFruits[3] }
+                    "5"->  { if(cant != null) listFruits[4].cantidad = cant
+                        fruta = listFruits[4] }
                     else -> {println("No se ha logrado ingresar ese ingrediente, por favor vuelva a intentarlo")
                         makeRecipe()}
                 }
                 if(fruta != null)
                     list.add(fruta)}
-            6->{ var cereal : Cereal? = null
-                val  parrafo = """
-                    Ingrese el tipo de cereal  que desea:
-                       1.Trigo
-                       2.Avena
-                       3.Maiz
-                """.trimIndent()
-                println(parrafo)
+            6->{  val listCereals: MutableList<Cereal> = ArrayList()
+                listCereals.add(Cereal("Cereal de trigo", 0, "Trigo") )
+                listCereals.add(Cereal("Cereal de avena", 0, "Avena") )
+                listCereals.add(Cereal("Cereal de maiz", 0, "Maiz") )
+                var cereal : Cereal? = null
+                println("Ingrese el tipo de cereal  que desea:")
+                for((index,value) in listCereals.withIndex())
+                    println("${index + 1}. ${value.nombre} ")
                 val typeSelected = readLine()
                 println("Ingrese la cantidad que desea agregar: ")
                 val cant : Int?= readLine()?.toInt()
                 when(typeSelected){
-                    "1"-> cereal = cant?.let { Cereal(nameIngredient, it, "Trigo") }
-                    "2"-> cereal = cant?.let { Cereal(nameIngredient, it, "Avena") }
-                    "3"-> cereal = cant?.let { Cereal(nameIngredient, it, "Maiz") }
+                    "1"-> { if(cant != null) listCereals[0].cantidad = cant
+                        cereal = listCereals[0] }
+                    "2"-> { if(cant != null) listCereals[1].cantidad = cant
+                        cereal = listCereals[1] }
+                    "3"->{ if(cant != null) listCereals[2].cantidad = cant
+                        cereal = listCereals[2] }
 
                     else -> {println("No se ha logrado ingresar ese ingrediente, por favor vuelva a intentarlo")
                         makeRecipe()}
@@ -210,42 +246,48 @@ fun makeRecipe() {
                 if(cereal != null)
                     list.add(cereal)}
 
-            7->{ var huevo : Huevos? = null
-                val  parrafo = """
-                    Ingrese el tipo de huevo  que desea:
-                       1.Huevos de gallina
-                       2.Huevos de aveztrus
-                       3.Huevos de codorniz
-                """.trimIndent()
-                println(parrafo)
+            7->{ val listEggs: MutableList<Huevos> = ArrayList()
+                listEggs.add( Huevos("Huevos de gallina", 0, "Gallina") )
+                listEggs.add( Huevos("Huevos de avestruz", 0, "Aveztrus") )
+                listEggs.add( Huevos("Huevos de codorniz", 0, "Codorniz") )
+                var huevo : Huevos? = null
+                println("Ingrese el tipo de huevo  que desea:")
+                for((index,value) in listEggs.withIndex())
+                    println("${index + 1}. ${value.nombre} ")
                 val typeSelected = readLine()
                 println("Ingrese la cantidad que desea agregar: ")
                 val cant : Int?= readLine()?.toInt()
                 when(typeSelected){
-                    "1"-> huevo = cant?.let { Huevos(nameIngredient, it, "Gallina") }
-                    "2"-> huevo = cant?.let { Huevos(nameIngredient, it, "Aveztrus") }
-                    "3"-> huevo = cant?.let { Huevos(nameIngredient, it, "Codorniz") }
+                    "1"->{ if(cant != null) listEggs[0].cantidad = cant
+                        huevo = listEggs[0]}
+                    "2"-> { if(cant != null) listEggs[1].cantidad = cant
+                        huevo = listEggs[1]}
+                    "3"-> { if(cant != null) listEggs[2].cantidad = cant
+                        huevo = listEggs[2]}
 
                     else -> {println("No se ha logrado ingresar ese ingrediente, por favor vuelva a intentarlo")
                         makeRecipe()}
                 }
                 if(huevo != null)
                     list.add(huevo)}
-            8->{ var aceite : Aceites? = null
-                val  parrafo = """
-                    Ingrese el tipo de aceite  que desea:
-                       1.Aceite de girasol
-                       2.Aceite de olivo
-                       3.Aceite de coco
-                """.trimIndent()
-                println(parrafo)
+            8->{ val listOils: MutableList<Aceites> = ArrayList()
+                listOils.add(Aceites("Aceite de girasol", 0, "Girasol"))
+                listOils.add(Aceites("Aceite de olivo", 0, "Olivo"))
+                listOils.add(Aceites("Aceite de coco", 0, "Coco"))
+                var aceite : Aceites? = null
+                println("Ingrese el tipo de aceite  que desea:")
+                for((index,value) in listOils.withIndex())
+                    println("${index + 1}. ${value.nombre} ")
                 val typeSelected = readLine()
                 println("Ingrese la cantidad que desea agregar: ")
                 val cant : Int?= readLine()?.toInt()
                 when(typeSelected){
-                    "1"-> aceite = cant?.let { Aceites(nameIngredient, it, "Girasol") }
-                    "2"-> aceite = cant?.let { Aceites(nameIngredient, it, "Olivo") }
-                    "3"-> aceite = cant?.let { Aceites(nameIngredient, it, "Coco") }
+                    "1"->  { if(cant != null) listOils[0].cantidad = cant
+                        aceite = listOils[0]}
+                    "2"->  { if(cant != null) listOils[1].cantidad = cant
+                        aceite = listOils[1]}
+                    "3"->  { if(cant != null) listOils[2].cantidad = cant
+                        aceite = listOils[2]}
 
                     else -> {println("No se ha logrado ingresar ese ingrediente, por favor vuelva a intentarlo")
                         makeRecipe()}
