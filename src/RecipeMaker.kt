@@ -66,7 +66,7 @@ fun makeRecipe() {
     val list: MutableList<Ingredientes> = ArrayList()
 
     println("Ingrese el nombre de la receta")
-    val nameRecipe: String? = readLine()gi
+    val nameRecipe: String? = readLine()
     var flag: Boolean = true
     while (flag) {
         val namesingredients = """
