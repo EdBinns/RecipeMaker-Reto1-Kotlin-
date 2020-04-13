@@ -1,2 +1,3 @@
-# RecipeMaker-Reto1-Kotlin-
-Primer reto del curso de kotlin en Platzi
+# RecipeMaker-Retos-Kotlin-
+Proyecto donde se unen todos los retos
+del curso de kotlin en Platzi
